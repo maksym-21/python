@@ -1,7 +1,7 @@
 #Znaleźć łączną długość wyrazów w napisie line.
 
-def function(str) :
-    return len(str) - str.count("\s")
+def function(s) :
+    return len(s) - s.count("\s")
 
 print("pls give me input:\n")
 
