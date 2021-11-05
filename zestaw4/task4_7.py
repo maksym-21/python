@@ -6,6 +6,6 @@ def flatten(L:list) :
             output += flatten(i)
         else : output.append(i)
     
-    return sorted(output)
+    return output
 
 print(flatten([1,[2,[4]],3]))
