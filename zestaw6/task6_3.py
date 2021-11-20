@@ -16,13 +16,7 @@ class Rectangle:
         return f'Rectangle({self.pt1.x}, {self.pt1.y}, {self.pt2.x}, {self.pt2.y})'
 
     def __eq__(self, other) : # obsługa rect1 == rect2
-        len1 = math.fabs(self.pt2.x - self.pt1.x)
-        high1 = math.fabs(self.pt2.y - self.pt1.y)
-
-        len2 = math.fabs(other.pt2.x - other.pt1.x)
-        high2 = math.fabs(other.pt2.y - other.pt1.y)
-
-        return True if ((len1 == len2 and high1 == high2) or (len1 == high2 and high1 == len2)) else False
+        return True if (self.pt1.__eq__(other.pt1) and self.pt2.__eq__(other.pt2)) else False
 
     def __ne__(self, other) : # obsługa rect1 != rect2
         return not self == other
@@ -61,28 +55,22 @@ class TestRectangle(unittest.TestCase) :
         r1 = Rectangle(0,0,2,2)
         r2 = Rectangle(-2,-2,0,0)
 
-        self.assertTrue(r1.__eq__(r2))
-        self.assertTrue(r2.__eq__(r1))
+        self.assertFalse(r1.__eq__(r2))
+        self.assertFalse(r2.__eq__(r1))
 
-        r3 = Rectangle(-2,-2,2,2)
+        r3 = Rectangle(-2,-2,0,0)
 
+        self.assertTrue(r2.__eq__(r3))
+        self.assertTrue(r3.__eq__(r2))
         self.assertFalse(r1.__eq__(r3))
-        self.assertFalse(r2.__eq__(r3))
-        self.assertFalse(r3.__eq__(r2))
 
     def test_ne(self) : 
         #fgnfnkll;l;
         r1 = Rectangle(0,0,2,2)
         r2 = Rectangle(-2,-2,0,0)
 
-        self.assertTrue(r1.__eq__(r2))
-        self.assertTrue(r2.__eq__(r1))
-
-        r3 = Rectangle(-2,-2,2,2)
-
-        self.assertFalse(r1.__eq__(r3))
-        self.assertFalse(r2.__eq__(r3))
-        self.assertFalse(r3.__eq__(r2))
+        self.assertTrue(r1.__ne__(r2))
+        self.assertTrue(r2.__ne__(r1))
 
     def test_center(self) :
         r1 = Rectangle(0,0,2,2)
