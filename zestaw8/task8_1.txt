@@ -1,0 +1,25 @@
+                                        Ax + By + C = 0
+                                            ||
+                                            ||
+                                    if A == 0 and B == 0
+                                    //               \\
+                                   //                 \\
+                                  No                   Yes
+                                  ||                        \\
+                         if A == 0 or B == 0                 \\
+                       // no          || yes               if C == 0 
+                      //              ||               // no        \\ yes
+                     //    equation with 1 var:       //             \\
+                    //     -return x = C / A  or     //         OK -> return c  = 0
+                   //      -return y = C / B        //
+                  //                               //
+                 //                       ValueError:number(not 0) != 0 
+               equation with 2 vars:
+                Ax + By + C = 0
+                      ||
+            check if C equals zero
+         // no              \\ yes
+By = - Ax - C                \\
+return y =  (- Ax - C) / B    \\  
+                               By = - Ax
+                               return y =  - Ax / B
