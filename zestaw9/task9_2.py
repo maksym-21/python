@@ -4,51 +4,36 @@ class Node :
         self.next = None
 
     def __str__(self) -> str:
-        return f'Node(name->{self.data})'    
+        return f'Node(name->{self.data})'
 
-class SingleList:
-    def __init__(self, name:str) :
-        self.name = name
+class List:
+    def __init__(self):
         self.head = None
         self.last = None
 
-    def add(self, other:Node) :
+    def add(self, other):
         if self.head == None : 
             self.head = other
             self.last = self.head
         else :
             t = self.last
             t.next = other
-            self.last = other
-
-    def __str__(self) -> str:
-        output = f'List :  name -> {self.name}, head -> {self.head}\n'
-
-        if self.last != self.head :
-            k = self.head
-            odrer = 1
-            while self.last.next != k.next :
-                k = k.next
-                output += f'\tnode nr{odrer} -> {k.__str__()}, '
-                output += f'next -> {k.next}\n'
-                odrer+=1
-            
-            return output    
-        else : return output
+            self.last = other  
 
     def search(self, data): # klasy O(n)
         k = None
         
-        if self.last == self.head : return self.head if data == self.head.data else False
+        if self.head.next == None : return self.head if data == self.head.data else None
+        elif self.last.data == data : return self.last
         else :
             k = self.head
-            while self.last != k :
+            while k.next != None :
                 if k.data == data : return k
                 
                 k = k.next
 
-            return None if k.data != data else k
-                
+        return None
+
     def find_min(self) : # klasy O(n)
         # Zwraca łącze do węzła z najmniejszym kluczem lub None dla pustej listy.
         min = float('inf')
@@ -79,41 +64,48 @@ class SingleList:
 
             return max if self.last.data < max else self.last.data
 
-    def reverse(self) : # klasy O(n)
-        # Odwracanie kolejności węzłów na liście.
-        arr = []
-        k = self.head
-        while self.last.next != k.next :
-            arr.append(k.data)
+    def reverse(self):
+        prev = None
+        current = self.head
 
-            k = k.next
-        arr.append(k.data)
-        
-        ar = arr[::-1]
-        print(ar)
+        while(current is not None):
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev 
 
-        L_new = SingleList(self.name)
+        return self.__str__()
 
-        for i in ar :
-            L_new.add(Node(i))
+    def __str__(self) -> str:
+        out = ''
+        s = self.head
 
-        return L_new    
-    
+        out += f'{s.__str__()}\n'
+        while s.next != None :
+            out += s.next.__str__()
+            out += '\n'
+            s = s.next
+
+        return out
 
 if __name__ == '__main__' :
-    L = SingleList('my_list')
+    L = List()
 
     L.add(Node(5))
     L.add(Node(3))
     L.add(Node(2))
     L.add(Node(22))
 
+    print()
+    print(L.__str__())
+
+    print()
     print(L.search(2))    
+    
+    print()
     print(L.find_min())
     print(L.find_max())
-    
-    print(L.__str__())
-    print(L.reverse())
 
-
-
+    print()
+    print(L.reverse())  
