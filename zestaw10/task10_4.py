@@ -18,9 +18,10 @@ class Queue :
         return (self.head + self.n-1) % self.n == self.tail
 
     def put(self, data) :
-        self.items[self.tail] = data
-        self.tail = (self.tail + 1) % self.n
-        if(self.is_full()) : return Exception('Queue is full!')
+        if not self.is_full():
+            self.items[self.tail]= data
+            self.tail = (self.tail + 1) % self.n
+        else : return Exception('Queue is full!')
 
     def get(self) :
         if not self.is_empty():
