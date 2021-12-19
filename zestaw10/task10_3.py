@@ -3,7 +3,7 @@ class Stack :
         self.data = []
         self.top = -1
 
-    def __pop__(self) : 
+    def pop(self) : 
         if(not self.isEmpty()) : 
             output = self.data[self.top]
             self.top -= 1
@@ -15,24 +15,24 @@ class Stack :
     def isEmpty(self) :
         return True if(self.top == -1) else False
 
-    def __sizeof__(self) :
+    def sizeof(self) :
         return len(self.data)
 
-    def __push__(self, value) :
+    def push(self, value) :
         if(self.data.count(value) == 0 or self.isEmpty()) :
-            if(value >= 0 and value<= self.__sizeof__()) :
+            if(value >= 0 and value<= self.sizeof()) :
                 self.data.append(value)
         
                 self.top += 1    
 
-    def __peek__(self) :
+    def peek(self) :
         if(not self.isEmpty()) :
             return self.data[self.top]
         else : 
             print(f'Stack is empty!')
             return None
 
-    def __str__(self) :
+    def str(self) :
         output = ''
 
         if not self.isEmpty() : 
@@ -51,19 +51,19 @@ if __name__ == '__main__' :
     s = Stack()
 
     print(s.isEmpty())
-    s.__push__(0)
-    s.__push__(1)
+    s.push(0)
+    s.push(1)
 
-    print(s.__str__())
+    print(s.str())
 
-    s.__push__(3)
-    s.__push__(0)
+    s.push(3)
+    s.push(0)
 
-    print(s.__str__())
+    print(s.str())
 
-    s.__pop__()
+    s.pop()
 
-    print(s.__str__())
+    print(s.str())
     print(s.isEmpty())
 
 
