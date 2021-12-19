@@ -17,10 +17,8 @@ class Stack :
 
             self.top -= 1
             self.n -= 1
-            return output
         else : 
             print(f'Stack is empty!\n')
-            return None
 
     def isEmpty(self) :
         return True if(self.top == -1) else False
@@ -58,8 +56,9 @@ class Stack :
                 output += ', '
 
             output = output[:-2]
+            out = output[::-1]
 
-            return 'Stack -> ' + output + '\n'
+            return 'Stack -> ' + out + '\n'
         else : return 'Stack is empty!\n'
 
 if __name__ == '__main__' :
