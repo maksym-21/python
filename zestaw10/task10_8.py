@@ -4,9 +4,10 @@ class RandomQueue:
         self.data = []
         self.numOfElem = 0
         self.size = size
+        #self.tail = None
 
     def insert(self, item): 
-        if item != None and ( self.numOfElem < self.size ) :
+        if item != None and self.size > self.numOfElem :
             self.data.append(item)
             self.numOfElem += 1
 
