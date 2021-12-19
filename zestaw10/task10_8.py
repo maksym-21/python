@@ -14,14 +14,10 @@ class RandomQueue:
         import random as r
         
         index = r.randint(0, self.numOfElem)
-
-        removed = self.data[index]
-        self.data[index] = None
+        
         self.numOfElem -= 1
 
-        self.resize()
-
-        return removed
+        return self.data.pop(index)
 
     def isEmpty(self) :
         return self.numOfElem == 0
@@ -29,14 +25,6 @@ class RandomQueue:
     def is_full(self) : 
         return self.numOfElem == self.size
 
-    def resize(self) :
-        new_array = []
-
-        for j in self.data : 
-            if j != None : new_array.append(j)
-
-        self.data = new_array    
-    
     def clear(self) : # czyszczenie listy
         self.data = []
 
