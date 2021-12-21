@@ -4,21 +4,31 @@ class RandomQueue:
         self.data = []
         self.numOfElem = 0
         self.size = size
-        #self.tail = None
+        self.tail = -1
 
     def insert(self, item): 
         if item != None and self.size > self.numOfElem :
             self.data.append(item)
             self.numOfElem += 1
+            self.tail += 1
 
     def remove(self) : # zwraca losowy element
         import random as r
         
         index = r.randint(0, self.numOfElem)
         
+        tmp = self.data[index]
+        tmp2 = self.data[self.tail]
+
+        self.data[self.tail] = tmp
+
+        self.data[index] = tmp2
+
+        out = self.data.pop(self.tail)
+        self.tail -= 1
         self.numOfElem -= 1
 
-        return self.data.pop(index)
+        return out
 
     def isEmpty(self) :
         return self.numOfElem == 0
