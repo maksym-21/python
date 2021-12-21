@@ -2,6 +2,8 @@
 
 from prettytable import PrettyTable
 
+from flask_sqlalchemy import SQLAlchemy
+
 import os
 import datetime as dt
 from sqlalchemy.engine import create_engine
