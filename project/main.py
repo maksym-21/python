@@ -1,14 +1,14 @@
 # Author -> Maksym Buniak
 
-from sqlalchemy.sql import select
-from sqlalchemy.sql.sqltypes import DateTime, String
-from sqlalchemy.engine.create import create_engine
-from sqlalchemy import MetaData, Table, Column, Integer, ForeignKey
-
 from prettytable import PrettyTable
 
 import os
 import datetime as dt
+from sqlalchemy.engine import create_engine
+from sqlalchemy.sql.expression import select
+from sqlalchemy.sql.schema import Column, ForeignKey, MetaData, Table
+
+from sqlalchemy.sql.sqltypes import DateTime, Integer, String
 
 dict = {
         "students_in_class" : ['id','class_id','student_id'],
@@ -422,5 +422,6 @@ if __name__ == '__main__' :
             elif prompt == 6 :
                 show_main_menu()
             elif prompt == 7 : 
+                conn.close()
                 break
         else : print('\nBad input-intend, please try again\n')
