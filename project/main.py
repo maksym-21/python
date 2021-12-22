@@ -35,8 +35,12 @@ def ret_pretty_table(field_names, rows) :
     t = PrettyTable()
     # setting an array of column names
     t.field_names = field_names
+    
+    rs = []
+    for i in rows : rs.append(list(i))
+
     # adding data(rows) to table
-    t.add_rows(rows)
+    t.add_rows(rs)
     return t
 
 def show_tables() :
