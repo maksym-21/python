@@ -76,4 +76,4 @@ def rand_int_array(n:int) :
     for j in range(n) : 
         array.append(my_set[r.randint(0,len(my_set) - 1)])
 
-    return array    
+    return array
