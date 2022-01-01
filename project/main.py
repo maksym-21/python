@@ -40,7 +40,8 @@ def ret_pretty_table(field_names, rows) :
     for i in rows : rs.append(list(i))
 
     # adding data(rows) to table
-    t.add_rows(rs)
+    for j in rs : t.add_row(j)
+
     return t
 
 def show_tables() :
