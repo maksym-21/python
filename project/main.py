@@ -10,7 +10,7 @@ from sqlalchemy.engine import create_engine
 from sqlalchemy.sql.expression import select
 from sqlalchemy.sql.schema import Column, ForeignKey, MetaData, Table
 
-from sqlalchemy.sql.sqltypes import DateTime, Integer, String
+from sqlalchemy.sql.sqltypes import Date, DateTime, Integer, String
 
 dict = {
         "students_in_class" : ['id','class_id','student_id'],
@@ -83,7 +83,7 @@ def insert_to_table() :
         name = input('\nenter name: ')
         lastName = input('enter last name: ')
         email = input('enter email: ')
-        date = input('enter birthdate(ex. 1.11.1999):\n')
+        date = input('enter birthdate(ex. 1.11.1999): ')
 
         d = date.strip().split('.')
 
@@ -374,7 +374,7 @@ if __name__ == '__main__' :
         Column('name', String(25), nullable=False),
         Column('lastName', String(25), nullable=False),
         Column('email', String(40)),
-        Column('birth', DateTime())
+        Column('birth', Date())
     )
 
     students = Table('students', meta,
@@ -420,7 +420,7 @@ if __name__ == '__main__' :
             elif prompt == 2 : 
                 insert_to_table()
             elif prompt == 3 :
-                delete_from_table() 
+                delete_from_table()
             elif prompt == 4 :
                 retrieve_from_table()
             elif prompt == 5 :
