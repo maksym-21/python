@@ -77,6 +77,3 @@ def rand_int_array(n:int) :
         array.append(my_set[r.randint(0,len(my_set) - 1)])
 
     return array    
-
-for i in range(4) :
-    print(rand_array_rand_sort_reversed(6))
