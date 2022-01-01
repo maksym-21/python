@@ -10,7 +10,7 @@ from sqlalchemy.engine import create_engine
 from sqlalchemy.sql.expression import select
 from sqlalchemy.sql.schema import Column, ForeignKey, MetaData, Table
 
-from sqlalchemy.sql.sqltypes import Date, DateTime, Integer, String
+from sqlalchemy.sql.sqltypes import Date, Integer, String
 
 dict = {
         "students_in_class" : ['id','class_id','student_id'],
